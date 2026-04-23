@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>S.A.Z. — Karaoke Restaurant</title>
+<style>
+:root{--gold:#D4AF37;--gold-light:#F2D27A;}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  min-height:100vh;
+  overflow:hidden;
+  font-family:Georgia,"Times New Roman",serif;
+  background:linear-gradient(rgba(0,0,0,.62),rgba(0,0,0,.76)),url("background.png") center/cover no-repeat fixed;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:white;
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:linear-gradient(120deg, transparent 20%, rgba(212,175,55,.06) 45%, transparent 70%);
+  animation:shimmer 8s linear infinite;
+  pointer-events:none;
+}
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:radial-gradient(circle at 50% 35%, rgba(212,175,55,.08), transparent 35%);
+  animation:pulseGlow 5s ease-in-out infinite;
+  pointer-events:none;
+}
+.container{
+  position:relative;
+  z-index:1;
+  text-align:center;
+  padding:40px 24px;
+  width:100%;
+  max-width:420px;
+}
+h1{
+  font-size:60px;
+  letter-spacing:.2em;
+  margin:0;
+  color:var(--gold-light);
+  animation:fadeRise 1.2s ease-out both;
+}
+.subtitle{
+  margin-top:10px;
+  font-size:12px;
+  letter-spacing:.4em;
+  color:var(--gold);
+  animation:fadeRise 1.2s ease-out .15s both;
+}
+.divider{
+  width:60px;
+  height:1px;
+  background:var(--gold);
+  margin:24px auto;
+  opacity:.5;
+  animation:fadeRise 1.2s ease-out .3s both;
+}
+.buttons{display:flex;flex-direction:column;gap:16px}
+.btn{
+  text-decoration:none;
+  padding:18px;
+  border:1px solid rgba(212,175,55,.7);
+  border-radius:12px;
+  color:var(--gold-light);
+  font-size:18px;
+  letter-spacing:.08em;
+  transition:all .2s ease;
+  background:rgba(0,0,0,.4);
+  backdrop-filter:blur(2px);
+}
+.buttons .btn:nth-child(1){animation:fadeRise 1.2s ease-out .45s both;}
+.buttons .btn:nth-child(2){animation:fadeRise 1.2s ease-out .6s both;}
+.btn:hover{background:rgba(212,175,55,.1);border-color:var(--gold-light);transform:translateY(-2px)}
+.footer{
+  margin-top:30px;
+  font-size:11px;
+  letter-spacing:.2em;
+  color:rgba(255,255,255,.6);
+  animation:fadeRise 1.2s ease-out .75s both;
+}
+@keyframes shimmer{
+  0%{transform:translateX(-30%)}
+  100%{transform:translateX(30%)}
+}
+@keyframes pulseGlow{
+  0%,100%{opacity:.35}
+  50%{opacity:.7}
+}
+@keyframes fadeRise{
+  from{opacity:0;transform:translateY(18px)}
+  to{opacity:1;transform:translateY(0)}
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>S.A.Z.</h1>
+  <div class="subtitle">KARAOKE RESTAURANT</div>
+  <div class="divider"></div>
+  <div class="buttons">
+    <a class="btn" href="https://drive.google.com/file/d/1-MXlB290fldabattxQSPr9T_en2PkUfQ/view?usp=drive_link" target="_blank">МЕНЮ</a>
+    <a class="btn" href="wine.html" target="_blank">ВИННАЯ КАРТА</a>
+  </div>
+  <div class="footer">S.A.Z. LOUNGE</div>
+</div>
+</body>
+</html>
