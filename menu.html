@@ -76,6 +76,13 @@ body {
   font-size:13px;
   white-space:nowrap;
   background:rgba(255,255,255,.02);
+  transition:all .2s ease;
+}
+.nav-link.active {
+  color:#080808;
+  background:var(--gold-soft);
+  border-color:var(--gold-soft);
+  box-shadow:0 0 0 1px rgba(255,255,255,.06) inset;
 }
 .section {
   border:1px solid var(--line);
@@ -141,7 +148,7 @@ body {
   </section>
 
   <nav class="nav">
-    <a href="#snacks" class="nav-link">Закуски</a>
+    <a href="#snacks" class="nav-link active">Закуски</a>
 <a href="#salads" class="nav-link">Салаты</a>
 <a href="#soups" class="nav-link">Супы</a>
 <a href="#pasta" class="nav-link">Паста</a>
@@ -348,5 +355,42 @@ body {
 
   <div class="service">Обслуживание 10%</div>
 </div>
+
+<script>
+  const links = [...document.querySelectorAll('.nav-link')];
+  const sections = links
+    .map(link => document.querySelector(link.getAttribute('href')))
+    .filter(Boolean);
+
+  const setActive = (id) => {
+    links.forEach(link => {
+      const active = link.getAttribute('href') === '#' + id;
+      link.classList.toggle('active', active);
+    });
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    const visible = entries
+      .filter(entry => entry.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+    if (visible.length) {
+      setActive(visible[0].target.id);
+    }
+  }, {
+    rootMargin: '-25% 0px -60% 0px',
+    threshold: [0.15, 0.3, 0.6]
+  });
+
+  sections.forEach(section => observer.observe(section));
+
+  links.forEach(link => {
+    link.addEventListener('click', () => {
+      const id = link.getAttribute('href').slice(1);
+      setActive(id);
+    });
+  });
+</script>
+
 </body>
 </html>
