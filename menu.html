@@ -52,6 +52,29 @@ body {
   letter-spacing:.28em;
   text-transform:uppercase;
 }
+.lang-switch {
+  display:inline-flex;
+  gap:4px;
+  margin-top:14px;
+  padding:4px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  background:rgba(0,0,0,.22);
+}
+.lang-btn {
+  border:0;
+  border-radius:999px;
+  padding:8px 14px;
+  color:var(--gold-soft);
+  background:transparent;
+  font:700 12px/1 Georgia,"Times New Roman",serif;
+  letter-spacing:.08em;
+  cursor:pointer;
+}
+.lang-btn.active {
+  color:#080808;
+  background:var(--gold-soft);
+}
 .nav {
   position:sticky;
   top:0;
@@ -101,6 +124,14 @@ body {
   padding-bottom:8px;
   border-bottom:1px solid var(--line);
 }
+.group-title {
+  margin:14px 0 4px;
+  color:var(--muted);
+  font-size:13px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.group-title:first-child { margin-top:0; }
 .item {
   display:grid;
   grid-template-columns:1fr auto;
@@ -114,12 +145,28 @@ body {
   font-size:16px;
   line-height:1.3;
 }
+.desc {
+  margin-top:4px;
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.35;
+  font-style:italic;
+}
 .price {
   color:var(--gold-soft);
   font-size:15px;
   white-space:nowrap;
   align-self:start;
+  display:inline-block;
+  text-decoration:none;
+  border:1px solid rgba(212,175,55,.38);
+  border-radius:999px;
+  padding:6px 10px;
+  background:rgba(212,175,55,.06);
+  transition:all .2s ease;
 }
+.price:hover { border-color:var(--gold-soft); background:rgba(212,175,55,.14); transform:translateY(-1px); }
+.price:focus-visible { outline:2px solid var(--gold-soft); outline-offset:3px; }
 .service {
   text-align:center;
   color:var(--muted);
@@ -145,6 +192,10 @@ body {
   <section class="hero">
     <h1 class="brand">S.A.Z.</h1>
     <div class="sub">Меню</div>
+    <div class="lang-switch" aria-label="Language">
+      <button class="lang-btn active" type="button" data-lang="ru">RU</button>
+      <button class="lang-btn" type="button" data-lang="en">EN</button>
+    </div>
   </section>
 
   <nav class="nav">
@@ -158,8 +209,15 @@ body {
 <a href="#sides" class="nav-link">Гарниры</a>
 <a href="#desserts" class="nav-link">Десерты</a>
 <a href="#cocktails" class="nav-link">Коктейли</a>
-<a href="#spirits" class="nav-link">Крепкий алкоголь</a>
-<a href="#drinks" class="nav-link">Пиво и безалкогольные напитки</a>
+<a href="#whiskey" class="nav-link">Виски</a>
+<a href="#vodka" class="nav-link">Водка</a>
+<a href="#tequila" class="nav-link">Текила</a>
+<a href="#gin" class="nav-link">Джин</a>
+<a href="#cognac" class="nav-link">Коньяк</a>
+<a href="#rum" class="nav-link">Ром</a>
+<a href="#beer" class="nav-link">Пиво</a>
+<a href="#soft-drinks" class="nav-link">Безалкогольные напитки</a>
+<a href="#tea" class="nav-link">Чай</a>
   </nav>
 
   
@@ -167,17 +225,17 @@ body {
       <h2>Закуски</h2>
       <div class="items">
         <div class="item"><div class="name">Овощная грядка с брынзой и разнотравьем</div><div class="price">5600 тг</div></div>
-<div class="item"><div class="name">Ассорти брускетт с бриошью на гриле</div><div class="price">4800 тг</div></div>
-<div class="item"><div class="name">Баклажаны Пармеджано с домашним песто</div><div class="price">4300 тг</div></div>
-<div class="item"><div class="name">Капрезе из фермерской моцареллы</div><div class="price">5800 тг</div></div>
+<div class="item"><div class="name">Ассорти брускетт с бриошью на гриле<div class="desc">(Лосось малосольный, копченый угорь, сливочная страчателла)</div></div><div class="price">4800 тг</div></div>
+<div class="item"><div class="name">Баклажаны Пармеджано с домашним песто<div class="desc">(Баклажан на гриле, соус из печеных овощей, спелые томаты, выдержанный пармезан)</div></div><div class="price">4300 тг</div></div>
+<div class="item"><div class="name">Капрезе из фермерской моцареллы<div class="desc">(Испанские томаты, моцарелла, домашний соус песто)</div></div><div class="price">5800 тг</div></div>
 <div class="item"><div class="name">Закуска «Бородинская» с сельдью</div><div class="price">4800 тг</div></div>
-<div class="item"><div class="name">Ассорти «Казахстан»</div><div class="price">11000 тг</div></div>
-<div class="item"><div class="name">Ассорти рыбное с филе апельсина</div><div class="price">17000 тг</div></div>
+<div class="item"><div class="name">Ассорти «Казахстан»<div class="desc">(Отварные казы, жая, шужук)</div></div><div class="price">11000 тг</div></div>
+<div class="item"><div class="name">Ассорти рыбное с филе апельсина<div class="desc">(Балык, семга, семга шеф-посола)</div></div><div class="price">17000 тг</div></div>
 <div class="item"><div class="name">Рулетики из баклажанов с творожным сыром и томатами</div><div class="price">3400 тг</div></div>
 <div class="item"><div class="name">Закуска “Rollo de verduras” с курочкой и овощами в рисовой бумаге</div><div class="price">3600 тг</div></div>
 <div class="item"><div class="name">Самосики из говядины со сметанным соусом</div><div class="price">3400 тг</div></div>
 <div class="item"><div class="name">Куриные наггетсы с сырным соусом</div><div class="price">4600 тг</div></div>
-<div class="item"><div class="name">Закуска “SAZ”</div><div class="price">3800 тг</div></div>
+<div class="item"><div class="name">Закуска “SAZ”<div class="desc">(Утиное копченое филе с творожным сыром)</div></div><div class="price">3800 тг</div></div>
       </div>
     </section>
     
@@ -190,7 +248,7 @@ body {
 <div class="item"><div class="name">Салат “Цезарь” с креветками</div><div class="price">5800 тг</div></div>
 <div class="item"><div class="name">Салат с лососем, шпинатом и каперсами</div><div class="price">5200 тг</div></div>
 <div class="item"><div class="name">Салат с куриными стрипсами и миндальной стружкой</div><div class="price">3600 тг</div></div>
-<div class="item"><div class="name">Салат с лососем и картофельным боксти</div><div class="price">3800 тг</div></div>
+<div class="item"><div class="name">Салат с лососем и картофельным боксти<div class="desc">(Салатный микс в виде драника)</div></div><div class="price">3800 тг</div></div>
 <div class="item"><div class="name">Салат “Бордо” с печеной свеклой и зернистой горчицей</div><div class="price">3900 тг</div></div>
 <div class="item"><div class="name">Салат “Баклажановое колье”</div><div class="price">3800 тг</div></div>
 <div class="item"><div class="name">Салат “Чука” с телячьим языком и японским майонезом</div><div class="price">3900 тг</div></div>
@@ -206,7 +264,7 @@ body {
       <div class="items">
         <div class="item"><div class="name">Кукурузный крем-суп с сыром и оливковой землей</div><div class="price">4200 тг</div></div>
 <div class="item"><div class="name">Чечевичный крем-суп</div><div class="price">3600 тг</div></div>
-<div class="item"><div class="name">Крем-суп из белого гриба</div><div class="price">4200 тг</div></div>
+<div class="item"><div class="name">Крем-суп из белого гриба<div class="desc">(Грибной крем-суп, брускетта со сливочным кремом и сезонным трюфелем)</div></div><div class="price">4200 тг</div></div>
 <div class="item"><div class="name">Огуречный суп Таратор с мятой на кефире</div><div class="price">3600 тг</div></div>
 <div class="item"><div class="name">Гаспачо с сыром Моцарелла</div><div class="price">4200 тг</div></div>
 <div class="item"><div class="name">Том ям с морепродуктами</div><div class="price">4800 тг</div></div>
@@ -217,7 +275,7 @@ body {
       <h2>Паста</h2>
       <div class="items">
         <div class="item"><div class="name">Феттучини Альфредо с курочкой и грибами</div><div class="price">4800 тг</div></div>
-<div class="item"><div class="name">Паста с овощами и домашним песто</div><div class="price">4600 тг</div></div>
+<div class="item"><div class="name">Паста с овощами и домашним песто<div class="desc">(Фреш паста, соус из печеных овощей, сливочная страчателла, домашний соус песто)</div></div><div class="price">4600 тг</div></div>
 <div class="item"><div class="name">Пенне “Арабьята” с томатами и базиликом</div><div class="price">4600 тг</div></div>
 <div class="item"><div class="name">Спагетти с морепродуктами в томатно-сливочном соусе</div><div class="price">5800 тг</div></div>
       </div>
@@ -230,7 +288,7 @@ body {
 <div class="item"><div class="name">Дорадо на гриле</div><div class="price">5600 тг</div></div>
 <div class="item"><div class="name">Стейк из семги “Nora” со сливочным соусом и овощами гриль</div><div class="price">8000 тг</div></div>
 <div class="item"><div class="name">Семга в пасте мисо с кунжутным рисом и сливочным соусом</div><div class="price">8200 тг</div></div>
-<div class="item"><div class="name">Рыбный сэт «Симфония моря» (на 6 персон)</div><div class="price">34000 тг</div></div>
+<div class="item"><div class="name">Рыбный сэт «Симфония моря» (на 6 персон)<div class="desc">(Сибас, лосось, дорадо, мидии, креветки)</div></div><div class="price">34000 тг</div></div>
 <div class="item"><div class="name">Осетр каспийский со спецэффектом</div><div class="price">130000 тг</div></div>
       </div>
     </section>
@@ -248,17 +306,17 @@ body {
 <div class="item"><div class="name">Стейк “T-bone”</div><div class="price">12000 тг</div></div>
 <div class="item"><div class="name">Стейк “Ribeye” из мраморной телятины</div><div class="price">12000 тг</div></div>
 <div class="item"><div class="name">Стейк “New York” из мраморной телятины</div><div class="price">14000 тг</div></div>
-<div class="item"><div class="name">Баварские колбаски с квашеной капустой и запеченным картофелем</div><div class="price">7000 тг</div></div>
+<div class="item"><div class="name">Баварские колбаски с квашеной капустой и запеченным картофелем<div class="desc">(Говядина, баранина, птица)</div></div><div class="price">7000 тг</div></div>
       </div>
     </section>
     
     <section id="sets" class="section">
       <h2>Сеты и хлеб</h2>
       <div class="items">
-        <div class="item"><div class="name">Сет 1 (на 6–7 персон)</div><div class="price">40000 тг</div></div>
-<div class="item"><div class="name">Сет 2 (на 8–10 персон)</div><div class="price">58000 тг</div></div>
-<div class="item"><div class="name">Сэт 3 (на 10–12 персон)</div><div class="price">59000 тг</div></div>
-<div class="item"><div class="name">Prime BBQ Feast (на 6–7 персон)</div><div class="price">52000 тг</div></div>
+        <div class="item"><div class="name">Сет 1 (на 6–7 персон)<div class="desc">(Стейк Рибай, Стейк Тибон, филе утки, филе курицы, мякоть говядины, антрекот, сахарная кость, хачапури с сыром и зеленью)</div></div><div class="price">40000 тг</div></div>
+<div class="item"><div class="name">Сет 2 (на 8–10 персон)<div class="desc">(Стейк Рибай, Стейк Тибон, филе утки, филе курицы, мякоть говядины, антрекот, баварские колбаски, хачапури с сыром, сахарная кость)</div></div><div class="price">58000 тг</div></div>
+<div class="item"><div class="name">Сэт 3 (на 10–12 персон)<div class="desc">(Баранья лопатка в тесте, 2 штуки)</div></div><div class="price">59000 тг</div></div>
+<div class="item"><div class="name">Prime BBQ Feast (на 6–7 персон)<div class="desc">(Мясо на кости: конина, говядина, баранина, овощи гриль и картофель)</div></div><div class="price">52000 тг</div></div>
 <div class="item"><div class="name">Хлебная корзина</div><div class="price">1700 тг</div></div>
 <div class="item"><div class="name">Чесночный багет с соусом тар-тар</div><div class="price">2500 тг</div></div>
 <div class="item"><div class="name">Хачапури с сыром</div><div class="price">5200 тг</div></div>
@@ -310,34 +368,90 @@ body {
       </div>
     </section>
     
-    <section id="spirits" class="section">
-      <h2>Крепкий алкоголь</h2>
+    <section id="whiskey" class="section">
+      <h2>Виски</h2>
       <div class="items">
+        <div class="group-title">Single malt Scotch Whiskey (50 ml)</div>
         <div class="item"><div class="name">Aberlour 12YO</div><div class="price">5590 тг</div></div>
+<div class="item"><div class="name">Aberlour 14YO</div><div class="price">7290 тг</div></div>
+<div class="item"><div class="name">The Glenlivet Founder's Reserve</div><div class="price">4490 тг</div></div>
 <div class="item"><div class="name">The Glenlivet 12YO Double Oak</div><div class="price">5590 тг</div></div>
+<div class="item"><div class="name">The Glenlivet 15YO French Oak Reserve</div><div class="price">7290 тг</div></div>
+<div class="item"><div class="name">The Glenlivet 18YO Batch Reserve</div><div class="price">11990 тг</div></div>
+<div class="item"><div class="name">The Macallan Triple cask 12 y.o</div><div class="price">7290 тг</div></div>
 <div class="item"><div class="name">The Macallan Double Cask 18 y.o</div><div class="price">21990 тг</div></div>
+<div class="item"><div class="name">Glenmorangie The Original 12 YO</div><div class="price">5190 тг</div></div>
+<div class="item"><div class="name">Glenmorangie The Lasanta 12 YO</div><div class="price">5590 тг</div></div>
+<div class="item"><div class="name">Ardbeg 10 YO</div><div class="price">5590 тг</div></div>
+<div class="group-title">Blended Scotch Whiskey (50 ml)</div>
 <div class="item"><div class="name">Chivas Regal 12YO</div><div class="price">3990 тг</div></div>
+<div class="item"><div class="name">Chivas Regal 18YO</div><div class="price">5990 тг</div></div>
+<div class="item"><div class="name">Royal Salute</div><div class="price">18990 тг</div></div>
+<div class="item"><div class="name">Ballantine's Finest</div><div class="price">3290 тг</div></div>
+<div class="item"><div class="name">Ballantine's 7YO</div><div class="price">3890 тг</div></div>
+<div class="group-title">Irish Whiskey (50 ml)</div>
 <div class="item"><div class="name">Jameson Original</div><div class="price">3590 тг</div></div>
+<div class="item"><div class="name">Jameson Crested</div><div class="price">3590 тг</div></div>
+<div class="item"><div class="name">Jameson Black Barrel</div><div class="price">3590 тг</div></div>
+<div class="group-title">Bourbon (50 ml)</div>
 <div class="item"><div class="name">Four Roses Original</div><div class="price">2990 тг</div></div>
+<div class="item"><div class="name">Wild Turkey 81</div><div class="price">3190 тг</div></div>
+<div class="item"><div class="name">Wild Turkey 101</div><div class="price">3290 тг</div></div>
+      </div>
+    </section>
+    
+    <section id="vodka" class="section">
+      <h2>Водка</h2>
+      <div class="items">
 <div class="item"><div class="name">Absolut Original</div><div class="price">2590 тг</div></div>
 <div class="item"><div class="name">Grey Goose</div><div class="price">3690 тг</div></div>
 <div class="item"><div class="name">Belvedere Pure</div><div class="price">3990 тг</div></div>
+      </div>
+    </section>
+    
+    <section id="tequila" class="section">
+      <h2>Текила</h2>
+      <div class="items">
 <div class="item"><div class="name">Olmeca Altos 100% Agave</div><div class="price">2890 тг</div></div>
+      </div>
+    </section>
+    
+    <section id="gin" class="section">
+      <h2>Джин</h2>
+      <div class="items">
 <div class="item"><div class="name">Beefeater London Dry Gin</div><div class="price">3290 тг</div></div>
+      </div>
+    </section>
+    
+    <section id="cognac" class="section">
+      <h2>Коньяк</h2>
+      <div class="items">
 <div class="item"><div class="name">Martell VS</div><div class="price">3490 тг</div></div>
 <div class="item"><div class="name">Hennessy V.S</div><div class="price">3590 тг</div></div>
+      </div>
+    </section>
+    
+    <section id="rum" class="section">
+      <h2>Ром</h2>
+      <div class="items">
 <div class="item"><div class="name">Bumbu XO</div><div class="price">4290 тг</div></div>
 <div class="item"><div class="name">Havana Club 7YO</div><div class="price">3590 тг</div></div>
       </div>
     </section>
     
-    <section id="drinks" class="section">
-      <h2>Пиво и безалкогольные напитки</h2>
+    <section id="beer" class="section">
+      <h2>Пиво</h2>
       <div class="items">
         <div class="item"><div class="name">Guinness</div><div class="price">6590 тг</div></div>
 <div class="item"><div class="name">Corona Extra</div><div class="price">3190 тг</div></div>
 <div class="item"><div class="name">Leffe Blonde</div><div class="price">3190 тг</div></div>
 <div class="item"><div class="name">Blanc 1664</div><div class="price">2500 тг</div></div>
+      </div>
+    </section>
+    
+    <section id="soft-drinks" class="section">
+      <h2>Безалкогольные напитки</h2>
+      <div class="items">
 <div class="item"><div class="name">Red Bull</div><div class="price">2190 тг</div></div>
 <div class="item"><div class="name">Borjomi 0.33</div><div class="price">1890 тг</div></div>
 <div class="item"><div class="name">Набеглави 0.2</div><div class="price">1590 тг</div></div>
@@ -345,6 +459,12 @@ body {
 <div class="item"><div class="name">Tassay 0.25</div><div class="price">990 тг</div></div>
 <div class="item"><div class="name">BLUE MONT ULTRA PREMIUM WATER 0.7</div><div class="price">2790 тг</div></div>
 <div class="item"><div class="name">Coca-Cola / Fanta / Sprite 0.25</div><div class="price">1690 тг</div></div>
+      </div>
+    </section>
+    
+    <section id="tea" class="section">
+      <h2>Чай</h2>
+      <div class="items">
 <div class="item"><div class="name">Assam</div><div class="price">2790 тг</div></div>
 <div class="item"><div class="name">Imperial Earl Grey</div><div class="price">2790 тг</div></div>
 <div class="item"><div class="name">Ташкентский чай</div><div class="price">3820 тг</div></div>
@@ -357,6 +477,268 @@ body {
 </div>
 
 <script>
+  const sectionText = {
+    ru: {
+      snacks:'Закуски',
+      salads:'Салаты',
+      soups:'Супы',
+      pasta:'Паста',
+      fish:'Рыба и морепродукты',
+      meat:'Основные блюда',
+      sets:'Сеты и хлеб',
+      sides:'Гарниры',
+      desserts:'Десерты',
+      cocktails:'Коктейли',
+      whiskey:'Виски',
+      vodka:'Водка',
+      tequila:'Текила',
+      gin:'Джин',
+      cognac:'Коньяк',
+      rum:'Ром',
+      beer:'Пиво',
+      'soft-drinks':'Безалкогольные напитки',
+      tea:'Чай'
+    },
+    en: {
+      snacks:'Snacks',
+      salads:'Salads',
+      soups:'Soups',
+      pasta:'Pasta',
+      fish:'Fish and Seafood',
+      meat:'Main Courses',
+      sets:'Sets and Bread',
+      sides:'Side Dishes',
+      desserts:'Desserts',
+      cocktails:'Cocktails',
+      whiskey:'Whiskey',
+      vodka:'Vodka',
+      tequila:'Tequila',
+      gin:'Gin',
+      cognac:'Cognac',
+      rum:'Rum',
+      beer:'Beer',
+      'soft-drinks':'Soft Drinks',
+      tea:'Tea'
+    }
+  };
+
+  const itemEn = [
+    {name:'Vegetable bed with cheese and herbs'},
+    {name:'Assorted bruschetta with grilled brioche', desc:'(Lightly salted salmon, smoked eel, creamy stracciatella)'},
+    {name:'Eggplant Parmesan with homemade pesto', desc:'(Grilled eggplant, baked vegetable sauce, ripe tomatoes, aged parmesan)'},
+    {name:'Caprese with farm mozzarella', desc:'(Spanish tomatoes, mozzarella, homemade pesto sauce)'},
+    {name:'Borodino-style appetizer with herring'},
+    {name:'Assorted "Kazakhstan"', desc:'(Boiled kazy, zhaya, shuzhuk)'},
+    {name:'Assorted fish with orange fillet', desc:'(Balyk, salmon, chef-salted salmon)'},
+    {name:'Eggplant rolls with curd cheese and tomatoes'},
+    {name:'"Rollo de verduras" with chicken and vegetables in rice paper'},
+    {name:'Beef samosas with sour cream sauce'},
+    {name:'Chicken nuggets with cheese sauce'},
+    {name:'Appetizer "SAZ"', desc:'(Smoked duck fillet with cream cheese)'},
+    {name:'Beetroot salad with cream cheese'},
+    {name:'Caesar salad with chicken'},
+    {name:'Caesar salad with smoked salmon'},
+    {name:'Caesar salad with shrimps'},
+    {name:'Salad with salmon, spinach and capers'},
+    {name:'Salad with crispy chicken strips and almond shavings'},
+    {name:'Salmon salad with potato boxty', desc:'(Salad mix in the form of a potato pancake)'},
+    {name:'Bordeaux salad with baked beets and granular mustard'},
+    {name:'Eggplant necklace salad'},
+    {name:'Chuka salad with veal tongue and Japanese mayonnaise'},
+    {name:'Spinach salad with spicy chicken and balsamic dressing'},
+    {name:'Salad with quail, mozzarella, buffalo and orange fillet'},
+    {name:'Pattaya salad with veal, glass noodles and ginger sauce'},
+    {name:'Greek salad'},
+    {name:'Corn cream soup with cheese and olive soil'},
+    {name:'Lentil cream soup'},
+    {name:'Cream of porcini mushroom soup', desc:'(Cream of mushroom soup, bruschetta with cream cheese and seasonal truffle)'},
+    {name:'Cucumber Tarator soup with mint on kefir'},
+    {name:'Gazpacho with Mozzarella cheese'},
+    {name:'Tom yum with seafood'},
+    {name:'Fettuccine Alfredo with chicken and mushrooms'},
+    {name:'Pasta with vegetables and homemade pesto', desc:'(Fresh pasta, baked vegetable sauce, creamy stracciatella, homemade pesto sauce)'},
+    {name:'Penne Arrabbiata with tomatoes and basil'},
+    {name:'Spaghetti with seafood in tomato cream sauce'},
+    {name:'Sea bass "In Barco" with vegetables and Commo sauce'},
+    {name:'Grilled dorado'},
+    {name:'Salmon steak "Nora" with creamy sauce and grilled vegetables'},
+    {name:'Salmon in miso paste with sesame rice and cream sauce'},
+    {name:'Fish set "Symphony of the Sea" (for 6 persons)', desc:'(Sea bass, salmon, dorado, mussels, shrimp)'},
+    {name:'Caspian sturgeon with special effect'},
+    {name:'Sugar bone'},
+    {name:'Rack of lamb with grilled vegetables and mint sauce'},
+    {name:'Irish-style veal ribs BBQ with potato balls'},
+    {name:'Veal medallions'},
+    {name:'Chicken breast "Cordon Bleu"'},
+    {name:'Duck "Magre" with drunken pear in berry sauce'},
+    {name:'Chicken cornish with Tzatziki sauce and lavash'},
+    {name:'T-bone steak'},
+    {name:'Ribeye steak of marbled veal'},
+    {name:'New York steak of marbled veal'},
+    {name:'Bavarian sausages with sauerkraut and baked potatoes', desc:'(Beef, lamb, poultry)'},
+    {name:'Set 1 (for 6-7 persons)', desc:'(Ribeye steak, T-bone steak, duck fillet, chicken fillet, beef pulp, entrecote, sugar bone, khachapuri with cheese and herbs)'},
+    {name:'Set 2 (for 8-10 persons)', desc:'(Ribeye steak, T-bone steak, duck fillet, chicken fillet, beef tenderloin, entrecote, Bavarian sausages, khachapuri with cheese, sugar bone)'},
+    {name:'Set 3 (for 10-12 persons)', desc:'(Lamb shoulder in dough, 2 pieces)'},
+    {name:'Prime BBQ Feast (for 6-7 persons)', desc:'(Meat on the bone: horse meat, beef, lamb, grilled vegetables and potatoes)'},
+    {name:'Bread basket'},
+    {name:'Garlic baguette with tartar sauce'},
+    {name:'Khachapuri with cheese'},
+    {name:'Poached rice'},
+    {name:'Black Italian rice'},
+    {name:'Broccoli and cauliflower with Parmesan'},
+    {name:'Grilled vegetables'},
+    {name:'Potato balls'},
+    {name:'Potato wedges'},
+    {name:'French fries'},
+    {name:'Chocolate fondant'},
+    {name:'Apple strudel with ice cream'},
+    {name:'Triple chocolate'},
+    {name:'Tiramisu'},
+    {name:'Cheesecake'},
+    {name:'Ice cream'},
+    {name:'Assorted fruits'},
+    {name:'Negroni'},
+    {name:'Aperol Spritz'},
+    {name:'Bellini'},
+    {name:'Whiskey Sour'},
+    {name:'Long Island / Old Fashioned'},
+    {name:'Easy Mix Cocktails'},
+    {name:'Whisper of Aperol'},
+    {name:'Berry Velvet'},
+    {name:'Blue Agave'},
+    {name:'Lavender Breeze'},
+    {name:'Pina Colada'},
+    {name:'Mojito'},
+    {name:'Crodino Spritz'},
+    {name:'Aberlour 12YO'},
+    {name:'Aberlour 14YO'},
+    {name:"The Glenlivet Founder's Reserve"},
+    {name:'The Glenlivet 12YO Double Oak'},
+    {name:'The Glenlivet 15YO French Oak Reserve'},
+    {name:'The Glenlivet 18YO Batch Reserve'},
+    {name:'The Macallan Triple cask 12 y.o'},
+    {name:'The Macallan Double Cask 18 y.o'},
+    {name:'Glenmorangie The Original 12 YO'},
+    {name:'Glenmorangie The Lasanta 12 YO'},
+    {name:'Ardbeg 10 YO'},
+    {name:'Chivas Regal 12YO'},
+    {name:'Chivas Regal 18YO'},
+    {name:'Royal Salute'},
+    {name:"Ballantine's Finest"},
+    {name:"Ballantine's 7YO"},
+    {name:'Jameson Original'},
+    {name:'Jameson Crested'},
+    {name:'Jameson Black Barrel'},
+    {name:'Four Roses Original'},
+    {name:'Wild Turkey 81'},
+    {name:'Wild Turkey 101'},
+    {name:'Absolut Original'},
+    {name:'Grey Goose'},
+    {name:'Belvedere Pure'},
+    {name:'Olmeca Altos 100% Agave'},
+    {name:'Beefeater London Dry Gin'},
+    {name:'Martell VS'},
+    {name:'Hennessy V.S'},
+    {name:'Bumbu XO'},
+    {name:'Havana Club 7YO'},
+    {name:'Guinness'},
+    {name:'Corona Extra'},
+    {name:'Leffe Blonde'},
+    {name:'Blanc 1664'},
+    {name:'Red Bull'},
+    {name:'Borjomi 0.33'},
+    {name:'Nabeghlavi 0.2'},
+    {name:'Rich 1L'},
+    {name:'Tassay 0.25'},
+    {name:'BLUE MONT ULTRA PREMIUM WATER 0.7'},
+    {name:'Coca-Cola / Fanta / Sprite 0.25'},
+    {name:'Assam'},
+    {name:'Imperial Earl Grey'},
+    {name:'Tashkent tea'},
+    {name:'Ginger-citrus tea'}
+  ];
+
+  const makeSlug = (text, index) => {
+    const fallback = 'item-' + (index + 1);
+    const slug = text
+      .toLowerCase()
+      .replace(/[^a-z0-9а-яё]+/gi, '-')
+      .replace(/^-+|-+$/g, '');
+    return slug || fallback;
+  };
+
+  const buildItemLink = (node, name) => {
+    const back = location.pathname.split('/').pop() || 'menu.html';
+    const priceText = document.documentElement.lang === 'en' ? node.ruPrice.replace(/тг|С‚Рі/g, 'KZT') : node.ruPrice;
+    node.priceEl.href = `item.html?id=${encodeURIComponent(node.slug)}&name=${encodeURIComponent(name.trim())}&price=${encodeURIComponent(priceText.trim())}&back=${encodeURIComponent(back)}`;
+    node.priceEl.setAttribute('aria-label', 'Open picture for ' + name.trim());
+  };
+
+  const itemNodes = [...document.querySelectorAll('.item')].map((item, index) => {
+    const nameEl = item.querySelector('.name');
+    const descEl = item.querySelector('.desc');
+    const priceEl = item.querySelector('.price');
+    const textNode = [...nameEl.childNodes].find(node => node.nodeType === Node.TEXT_NODE);
+    const ruName = textNode ? textNode.nodeValue : nameEl.textContent;
+    const slug = makeSlug(itemEn[index]?.name || ruName, index);
+    const priceLink = document.createElement('a');
+    priceLink.className = priceEl.className;
+    priceLink.textContent = priceEl.textContent;
+    priceEl.replaceWith(priceLink);
+    return {
+      nameEl,
+      descEl,
+      priceEl: priceLink,
+      textNode,
+      ruName,
+      ruDesc: descEl ? descEl.textContent : '',
+      ruPrice: priceLink.textContent,
+      slug,
+      en: itemEn[index]
+    };
+  });
+
+  const setName = (node, text) => {
+    if (node.textNode) {
+      node.textNode.nodeValue = text;
+    } else {
+      node.nameEl.textContent = text;
+    }
+  };
+
+  const applyLanguage = (lang) => {
+    document.documentElement.lang = lang;
+    document.querySelector('.sub').textContent = lang === 'en' ? 'Menu' : 'Меню';
+    document.querySelector('.service').textContent = lang === 'en' ? 'Service 10%' : 'Обслуживание 10%';
+
+    document.querySelectorAll('.lang-btn').forEach(button => {
+      button.classList.toggle('active', button.dataset.lang === lang);
+    });
+
+    document.querySelectorAll('.section').forEach(section => {
+      const label = sectionText[lang][section.id];
+      section.querySelector('h2').textContent = label;
+      document.querySelector(`.nav-link[href="#${section.id}"]`).textContent = label;
+    });
+
+    itemNodes.forEach(node => {
+      const en = node.en || {};
+      const displayName = lang === 'en' ? en.name || node.ruName : node.ruName;
+      setName(node, displayName);
+      if (node.descEl) {
+        node.descEl.textContent = lang === 'en' ? en.desc || node.ruDesc : node.ruDesc;
+      }
+      buildItemLink(node, displayName);
+      node.priceEl.textContent = lang === 'en' ? node.ruPrice.replace('тг', 'KZT') : node.ruPrice;
+    });
+
+    localStorage.setItem('saz-menu-lang', lang);
+  };
+
+  document.querySelectorAll('.lang-btn').forEach(button => {
+    button.addEventListener('click', () => applyLanguage(button.dataset.lang));
+  });
+
   const links = [...document.querySelectorAll('.nav-link')];
   const sections = links
     .map(link => document.querySelector(link.getAttribute('href')))
@@ -390,6 +772,8 @@ body {
       setActive(id);
     });
   });
+
+  applyLanguage(localStorage.getItem('saz-menu-lang') === 'en' ? 'en' : 'ru');
 </script>
 
 </body>
